@@ -108,7 +108,6 @@ class Audio extends React.PureComponent {
           comment={fullPlayer ? comment : comment}
           buttonRecord={recordButton}
           volumeOrientationDown={volumeOrientationDown}
-          onCommentSubmit={fullPlayer ? recordButton : recordButton}
           controlStates={controlStates}
           controlCallbacks={controlCallbacks}
           timelineStates={timelineStates}

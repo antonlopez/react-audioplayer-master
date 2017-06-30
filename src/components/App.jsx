@@ -38,7 +38,7 @@ class App extends React.Component {
         comment={true}
         color="#212121"
         recordButton={() => {
-          alert('Insert your function to record');
+          alert('Hello');
         }}
         playlist={playlist.playlist}
         style={{
