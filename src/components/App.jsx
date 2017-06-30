@@ -36,11 +36,8 @@ class App extends React.Component {
         height={100}
         fullPlayer={false}
         comment={true}
-        didnotwork={() => {
-          alert('Insert your function to record');
-        }}
         color="#212121"
-        recordButton2={() => {
+        recordButton={() => {
           alert('Insert your function to record');
         }}
         playlist={playlist.playlist}

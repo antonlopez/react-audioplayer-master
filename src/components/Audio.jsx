@@ -11,7 +11,7 @@ class Audio extends React.PureComponent {
     width: PropTypes.number,
     height: PropTypes.number,
     fullPlayer: PropTypes.bool,
-    recordButton2: PropTypes.func,
+    recordButton: PropTypes.func,
     comment: PropTypes.bool,
     volumeOrientationDown: PropTypes.bool,
     didnotwork: PropTypes.func,
@@ -71,12 +71,12 @@ class Audio extends React.PureComponent {
       comment,
       volumeOrientationDown,
       didnotwork,
+        recordButton,
       CommentsWrapperStates,
       controlStates,
       controlCallbacks,
       timelineStates,
-      timelineCallbacks,
-      buttonRecord
+      timelineCallbacks
     } = this.props;
     const height = fullPlayer ? this.props.height : 52;
     const newStyle = Object.assign({}, {
@@ -106,9 +106,9 @@ class Audio extends React.PureComponent {
           width={_width}
           name={name}
           comment={fullPlayer ? comment : comment}
-          buttonRecord={onRecordButton}
+          buttonRecord={recordButton}
           volumeOrientationDown={volumeOrientationDown}
-          onCommentSubmit={fullPlayer ? onRecordButton : onRecordButton}
+          onCommentSubmit={fullPlayer ? recordButton : recordButton}
           controlStates={controlStates}
           controlCallbacks={controlCallbacks}
           timelineStates={timelineStates}
