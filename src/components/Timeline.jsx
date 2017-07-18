@@ -122,9 +122,16 @@ class Timeline extends React.Component {
               translate={`translate(${this.state.translate + 40})`}
               onMouseDown={this._onMouseDownProgressBarHandler}
             />
+            <Marker
+              width={handlerWidth}
+              height={handlerHeight}
+              visibility={true}
+              translate={`translate(${this.state.translate + 160})`}
+              onMouseDown={this._onMouseDownProgressBarHandler}
+            />
             <ProgressBarHandler
               width={handlerWidth}
-              height={handlerHeight-100}
+              height={handlerHeight - 100}
               visibility={this.state.showHandler || this.holding}
               translate={`translate(${this.state.translate - 6})`}
               onMouseDown={this._onMouseDownProgressBarHandler}
