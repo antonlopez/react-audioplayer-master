@@ -1,6 +1,6 @@
 {
   "name": "translation-audio-player",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A personal audio player for React.js with a few modifications from original",
   "main": "lib/index.js",
   "repository": {

@@ -36,7 +36,6 @@ class MainPlayer extends React.Component {
     const classNameCollection = `${style.mainPlayer} ${className}`.trim();
     return (
       <div className={classNameCollection}>
-
         <div className={style.btnStack}>
           <Controls
             volumeOrientationDown={volumeOrientationDown}

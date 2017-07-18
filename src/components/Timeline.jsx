@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProgressBar from './ProgressBar';
 import ProgressBarHandler from './ProgressBarHandler';
-import Markers from './Markers';
 import style from '../styles/audioElements.css';
+import Marker from './Markers';
+
 
 class Timeline extends React.Component {
   static propTypes = {
@@ -95,37 +96,14 @@ class Timeline extends React.Component {
   }
   render() {
     const handlerWidth = 12;
-    const handlerHeight = 12;
-    const handlerWidth2 = 24;
-    const handlerHeight2 = 24;
-    const markerHandlerHeight = 20;
+    const handlerHeight = 112;           //
     const containerWidth = this.state.barWidth;
+    const containerHeight = 200;
     const barHeight = 4;
     const markerBarheight = 4;
     return (
       <div>
-        <div className={style.timeLine} style={{ width: containerWidth, transform: 'translateY(-4px)' }}>
-          <ProgressBar
-            width={containerWidth}
-            height={handlerHeight}
-            barHeight={markerBarheight}
-            handlerWidth={handlerWidth}
-            translate={this.state.translate}
-            duration={this.props.duration}
-            onMouseDown={this._onMouseDownProgressBar}
-            onMouseOver={this._onMouseOverProgressBar}
-            onMouseOut={this._onMouseOutProgressBar}
-          >
-            <Markers
-              width={handlerWidth2}
-              height={handlerHeight2}
-              visibility={this.state.showHandler || this.holding}
-              translate={`translate(${this.state.translate - 40})`}
-              onMouseDown={this._onMouseDownProgressBarHandler}
-            />
-          </ProgressBar>
-        </div>
-        <div className={style.timeLine} style={{ width: containerWidth, transform: 'translateY(-4px)' }}>
+        <div className={style.timeLine} style={{ height: containerHeight, width: containerWidth, transform: 'translateY(-4px)' }}>
           <ProgressBar
             width={containerWidth}
             height={handlerHeight}
@@ -137,9 +115,16 @@ class Timeline extends React.Component {
             onMouseOver={this._onMouseOverProgressBar}
             onMouseOut={this._onMouseOutProgressBar}
           >
-            <ProgressBarHandler
+            <Marker
               width={handlerWidth}
               height={handlerHeight}
+              visibility={true}
+              translate={`translate(${this.state.translate + 40})`}
+              onMouseDown={this._onMouseDownProgressBarHandler}
+            />
+            <ProgressBarHandler
+              width={handlerWidth}
+              height={handlerHeight-100}
               visibility={this.state.showHandler || this.holding}
               translate={`translate(${this.state.translate - 6})`}
               onMouseDown={this._onMouseDownProgressBarHandler}
