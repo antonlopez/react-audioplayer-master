@@ -49,7 +49,9 @@ class MainPlayer extends React.Component {
             {...timelineStates}
             {...timelineCallbacks}
           />
-          <RecordBtn onClick={this.props.buttonRecord} />
+
+          {this.props.mic ? <RecordBtn onClick={this.props.buttonRecord} /> : ''}
+
           <div className={style.timeNameContainer} style={{ color: this.context.color }}>
             <div className={style.nameContainer} title={name}>{name}</div>
             <div className={style.timeContainer}>
