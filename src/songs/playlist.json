@@ -2,7 +2,7 @@
   "playlist": [
     {
       "name": "Shape of you",
-      "src": "http://localhost:8080/songs/shape_of_you.mp3",
+      "src": "http://localhost:8080/songs/rise.mp3",
       "img": "http://oss.tan8.com/yuepuku/100/50357/50357_prev.jpg?v=1487820191",
       "comments": [{
           "time": 3.01,

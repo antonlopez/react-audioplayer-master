@@ -20,6 +20,8 @@ class MainPlayer extends React.Component {
     this.setState({ progressTime });
   }
   render() {
+    console.log('time:', parseInt(this.state.progressTime));
+
     const {
       width,
       name,
@@ -49,7 +51,7 @@ class MainPlayer extends React.Component {
             {...timelineStates}
             {...timelineCallbacks}
           />
-          <RecordBtn onClick={this.props.buttonRecord} />
+
           <div className={style.timeNameContainer} style={{ color: this.context.color }}>
             <div className={style.nameContainer} title={name}>{name}</div>
             <div className={style.timeContainer}>
