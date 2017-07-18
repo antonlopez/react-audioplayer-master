@@ -112,6 +112,7 @@ class Audio extends React.PureComponent {
           controlCallbacks={controlCallbacks}
           timelineStates={timelineStates}
           timelineCallbacks={timelineCallbacks}
+          mic={this.props.mic}
 
         >
           {/* <LikeBtn />

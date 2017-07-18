@@ -37,6 +37,7 @@ class App extends React.Component {
         fullPlayer={false}
         comment={true}
         color="#212121"
+        mic={true}
         recordButton={() => {
           alert('Hello');
         }}
