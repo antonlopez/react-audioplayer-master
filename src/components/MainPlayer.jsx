@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Timeline from './Timeline';
 import Controls from './Controls';
-import CommentInputContainer from './CommentInputContainer';
 import Time from './Time';
 import style from '../styles/audioElements.css';
 import RecordBtn from './buttons/RecordBtn';

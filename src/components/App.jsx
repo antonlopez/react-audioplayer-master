@@ -46,7 +46,7 @@ class App extends React.Component {
           boxShadow: '1px 2px 6px rgba(0, 0, 0, 0.2)',
           width: '800px',
           height: '50px',
-          marginTop: '400px'
+          marginTop: '200px'
         }}
 
         // store a reference of the audio component

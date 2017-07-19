@@ -7,9 +7,8 @@ const Markers = ({
                                 translate,
                                 visibility,
                                 onMouseDown
-                            }, { color }) => (
+                            }) => (
                               <g
-                                visibility={visibility ? 'visible' : 'hidden'}
                                 transform={translate}
                                 onMouseDown={onMouseDown}
                               >
@@ -20,10 +19,7 @@ const Markers = ({
                               </g>
 );
 Markers.propTypes = {
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  translate: PropTypes.string.isRequired,
-  onMouseDown: PropTypes.func.isRequired
+  translate: PropTypes.string.isRequired
 };
 Markers.contextTypes = {
   color: PropTypes.string

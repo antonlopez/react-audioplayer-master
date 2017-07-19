@@ -4,6 +4,7 @@ import ProgressBar from './ProgressBar';
 import ProgressBarHandler from './ProgressBarHandler';
 import style from '../styles/audioElements.css';
 import Marker from './Markers';
+import MarkersContainer from './MarkersContainer';
 
 
 class Timeline extends React.Component {
@@ -100,7 +101,7 @@ class Timeline extends React.Component {
     const containerWidth = this.state.barWidth;
     const containerHeight = 200;
     const barHeight = 4;
-    const markerBarheight = 4;
+    const markerPosition = 80;
     return (
       <div>
         <div className={style.timeLine} style={{ height: containerHeight, width: containerWidth, transform: 'translateY(-4px)' }}>
@@ -119,16 +120,10 @@ class Timeline extends React.Component {
               width={handlerWidth}
               height={handlerHeight}
               visibility={true}
-              translate={`translate(${this.state.translate + 40})`}
+              translate={`translate(${markerPosition})`}
               onMouseDown={this._onMouseDownProgressBarHandler}
             />
-            <Marker
-              width={handlerWidth}
-              height={handlerHeight}
-              visibility={true}
-              translate={`translate(${this.state.translate + 160})`}
-              onMouseDown={this._onMouseDownProgressBarHandler}
-            />
+            <MarkersContainer />
             <ProgressBarHandler
               width={handlerWidth}
               height={handlerHeight - 100}
