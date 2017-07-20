@@ -139,7 +139,7 @@ class Timeline extends React.Component {
             onMouseOver={this._onMouseOverProgressBar}
             onMouseOut={this._onMouseOutProgressBar}
           >
-            {console.log('translate', this.state.translate)}
+            {console.log('duration', this.props.duration)}
             {/* {console.log('updateTime: ', (this.state.translate / this.state.barWidth) * this.props.duration)}*/}
             {this.callMarker()}
           </ProgressBar>
