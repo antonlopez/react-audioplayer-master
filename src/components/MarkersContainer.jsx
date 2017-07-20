@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import markers from '../songs/markers.json';
-import Marker from './Markers';
+import markerObj from '../songs/markers.json';
+import Marker from './Marker';
 
 const iterator = 0;
 class MarkersContainer extends React.Component {
@@ -14,20 +14,19 @@ class MarkersContainer extends React.Component {
     const totalTime = 130;             // get the time from Time.jsx
     const verse = [];
     const seconds = [];
-    const equalAt = [];
     const markerArray = [];
 
-    const marker = Object.keys(markers.markers);   // get the first column of JSON data
+    const marker = Object.keys(markerObj.markers);   // get the first column of JSON data
     const lenght = marker.length;
 
 
     let i = 0;
     const j = 0;
 
-    for (const key in markers.markers) {
+    for (const key in markerObj.markers) {
       verse[i] = key;
 
-      seconds[i] = parseInt(markers.markers[key] / 44100);
+      seconds[i] = parseInt(markerObj.markers[key] / 44100);
 
       i++;
     }
@@ -49,30 +48,37 @@ class MarkersContainer extends React.Component {
     this.state = { markerArray,
       availableInfo: false };
 
-    this.createItem = this.createItem.bind(this);
+    this.createItems = this.createItems.bind(this);
   }
 
 
-  createItem() {
-    return (<Marker
-      visibility={true}
-      translate={`translate(${460})`}
-    />);
-  }
+  // createItems() {
+  //   return (<Marker
+  //     visibility={true}
+  //     translate={`translate(${150})`}
+  //   />);
+  // }
 
 
-  render() {
-    const test = this.createItem();
+  createItems() {
     const rendert = this.state.markerArray;
     console.log(rendert);
-
 
     return (
 
       <Marker
-        visibility={true}
-        translate={`translate(${460})`}
+        translate={`translate(${400})`}
       />
+
+
+    );
+  }
+
+
+  render() {
+    return (
+
+      this.createItems()
 
     );
   }

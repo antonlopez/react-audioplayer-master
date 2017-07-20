@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import ProgressBar from './ProgressBar';
 import ProgressBarHandler from './ProgressBarHandler';
 import style from '../styles/audioElements.css';
-import Marker from './Markers';
-import MarkersContainer from './MarkersContainer';
+import Marker from './Marker';
+import markerObj from '../songs/markers.json';
 
 
 class Timeline extends React.Component {
@@ -95,15 +95,43 @@ class Timeline extends React.Component {
     if (translate > max) { translate = max; }
     this.setState({ translate });
   }
+  callMarker() {
+    const markersArray = [];
+    markersArray[0] = <Marker translate={`translate(${300})`} />;
+    markersArray[1] = <Marker translate={`translate(${100})`} />;
+    markersArray[2] = <Marker translate={`translate(${400})`} />;
+    return (
+        markersArray
+    );
+  }
   render() {
     const handlerWidth = 12;
     const handlerHeight = 112;           //
     const containerWidth = this.state.barWidth;
-    const containerHeight = 200;
+    const containerHeight = 100;
     const barHeight = 4;
-    const markerPosition = 80;
+    const handlerHeight2 = 112;           //
+    const containerWidth2 = this.state.barWidth;
+    const containerHeight2 = 10;
+
+
     return (
       <div>
+        <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(-4px)' }}>
+          <ProgressBar
+            width={containerWidth2}
+            height={handlerHeight2}
+            barHeight={0}
+            handlerWidth={''}
+            translate={''}
+            duration={this.props.duration}
+            onMouseDown={''}
+            onMouseOver={''}
+            onMouseOut={''}
+          >
+            {this.callMarker()}
+          </ProgressBar>
+        </div>
         <div className={style.timeLine} style={{ height: containerHeight, width: containerWidth, transform: 'translateY(-4px)' }}>
           <ProgressBar
             width={containerWidth}
@@ -116,14 +144,6 @@ class Timeline extends React.Component {
             onMouseOver={this._onMouseOverProgressBar}
             onMouseOut={this._onMouseOutProgressBar}
           >
-            <Marker
-              width={handlerWidth}
-              height={handlerHeight}
-              visibility={true}
-              translate={`translate(${markerPosition})`}
-              onMouseDown={this._onMouseDownProgressBarHandler}
-            />
-            <MarkersContainer />
             <ProgressBarHandler
               width={handlerWidth}
               height={handlerHeight - 100}
