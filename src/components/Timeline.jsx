@@ -17,7 +17,7 @@ class Timeline extends React.Component {
     this.state = {
       showHandler: false,
       barWidth: (props.appWidth < 300) ? 300 : props.appWidth,
-      translate: 0
+      translate: 0,
     };
     this.holding = false;
     this.shouldTogglePlayPause = this.props.playing;
@@ -96,12 +96,23 @@ class Timeline extends React.Component {
     this.setState({ translate });
   }
   callMarker() {
-    const markersArray = [];
-    markersArray[0] = <Marker translate={`translate(${300})`} />;
-    markersArray[1] = <Marker translate={`translate(${100})`} />;
-    markersArray[2] = <Marker translate={`translate(${400})`} />;
+    const markerArray = [];
+    const marker = Object.keys(markerObj.markers);   // get the first column of JSON data
+    const lenght = marker.length;
+
+
+    for (const key in markerObj.markers) {
+        // normalization position = (time/duration)* barwitdh
+      const position = ((parseInt(markerObj.markers[key] / 44100)) / (this.props.duration)) * this.state.barWidth;
+      console.log('Json Postion: ', position);
+      markerArray.push(<Marker
+        visibility={true}
+        translate={`translate(${position})`}
+      />);
+    }
+
     return (
-        markersArray
+        markerArray
     );
   }
   render() {
@@ -114,7 +125,6 @@ class Timeline extends React.Component {
     const containerWidth2 = this.state.barWidth;
     const containerHeight2 = 10;
 
-
     return (
       <div>
         <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(-4px)' }}>
@@ -122,13 +132,15 @@ class Timeline extends React.Component {
             width={containerWidth2}
             height={handlerHeight2}
             barHeight={0}
-            handlerWidth={''}
-            translate={''}
+            handlerWidth={handlerWidth}
+            translate={this.state.translate}
             duration={this.props.duration}
-            onMouseDown={''}
-            onMouseOver={''}
-            onMouseOut={''}
+            onMouseDown={this._onMouseDownProgressBar}
+            onMouseOver={this._onMouseOverProgressBar}
+            onMouseOut={this._onMouseOutProgressBar}
           >
+            {console.log('translate', this.state.translate)}
+            {/* {console.log('updateTime: ', (this.state.translate / this.state.barWidth) * this.props.duration)}*/}
             {this.callMarker()}
           </ProgressBar>
         </div>
@@ -151,7 +163,6 @@ class Timeline extends React.Component {
               translate={`translate(${this.state.translate - 6})`}
               onMouseDown={this._onMouseDownProgressBarHandler}
             />
-            {console.log('translate', parseInt(this.state.translate))}
           </ProgressBar>
         </div>
       </div>
