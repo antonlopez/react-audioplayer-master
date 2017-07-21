@@ -8,13 +8,13 @@ import style from '../styles/audioComponents.css';
 
 class Audio extends React.PureComponent {
   static propTypes = {
+    markers: PropTypes.object,
     width: PropTypes.number,
     height: PropTypes.number,
     fullPlayer: PropTypes.bool,
     recordButton: PropTypes.func,
     comment: PropTypes.bool,
     volumeOrientationDown: PropTypes.bool,
-    didnotwork: PropTypes.func,
     color: PropTypes.string,
     buttonRecord: PropTypes.func,
     CommentsWrapperStates: PropTypes.shape({
@@ -65,12 +65,12 @@ class Audio extends React.PureComponent {
 
   render() {
     const {
+      markers,
       width,
       name,
       fullPlayer,
       comment,
       volumeOrientationDown,
-      didnotwork,
         recordButton,
       CommentsWrapperStates,
       controlStates,
@@ -86,7 +86,6 @@ class Audio extends React.PureComponent {
 
     const _width = parseInt(newStyle.width);
     const _height = parseInt(newStyle.height);
-
     return (
       <div
         className={`${styleNormalize.rootContainer} ${style.audio}`}
@@ -113,6 +112,8 @@ class Audio extends React.PureComponent {
           timelineStates={timelineStates}
           timelineCallbacks={timelineCallbacks}
           mic={this.props.mic}
+          markers={markers}
+
 
         >
           {/* <LikeBtn />

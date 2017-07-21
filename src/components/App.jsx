@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Audio from './Audio';
 import playlist from '../songs/playlist.json';
+import marker from '../songs/markers.json';
 
 // const App = () => (
 //   <Audio
@@ -28,8 +29,8 @@ class App extends React.Component {
     // some code ...
     ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-play'));
   }
-
   render() {
+    //console.log('Marker obj', marker.markers);
     return (
       <Audio
         width={600}
@@ -37,6 +38,7 @@ class App extends React.Component {
         fullPlayer={false}
         comment={true}
         color="#212121"
+        markers={marker.markers}
         mic={true}
         recordButton={() => {
           alert('Hello');

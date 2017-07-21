@@ -7,6 +7,9 @@ import style from '../styles/audioElements.css';
 import RecordBtn from './buttons/RecordBtn';
 
 class MainPlayer extends React.Component {
+  static propTypes = {
+    markers: PropTypes.object
+  };
   constructor(props) {
     super(props);
     this.state = { progressTime: 0 };
@@ -20,6 +23,7 @@ class MainPlayer extends React.Component {
   }
   render() {
     const {
+      markers,
       width,
       name,
       comment,
@@ -42,6 +46,7 @@ class MainPlayer extends React.Component {
             {...controlCallbacks}
           />
           <Timeline
+            markers={markers}
             appWidth={width - 250}
             updateProgressTime={this.updateProgressTime}
             {...timelineStates}
