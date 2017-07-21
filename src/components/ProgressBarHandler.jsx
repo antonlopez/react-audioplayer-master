@@ -13,7 +13,8 @@ const progressBarHandler = ({
     transform={translate}
     onMouseDown={onMouseDown}
   >
-    <rect x={0} y="50" width={width} height={height} fill={color} />
+    <rect x={0} y="0" width={width} height={height} fill={color} />
+    <rect x={width / 3} y={height / 3} width={width / 3} height={height / 3} fill="#000" />
   </g>
 );
 progressBarHandler.propTypes = {
