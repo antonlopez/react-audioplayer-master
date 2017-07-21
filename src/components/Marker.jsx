@@ -8,11 +8,9 @@ class Markers extends React.Component {
       transform={this.props.translate}
     >
       <polygon
-          // points="60,40 100,20 100,80 60,100 20,80 20,20"
-        // points="30,20 50,10 50,40 30,50 10,40 10,10"
-          // points="0,20 50,10 50,40 0,50 10,40 10,10"
-        points="0,30 10,20 10,40 0,50 -10,40 -10,20"
-        style={{ fill: 'F0FF36', stroke: '504C4C', strokeWidth: .3 }}
+        // points="0,30 10,20 10,40 0,50 -10,40 -10,20"
+        points="0,20 15,10 15,40 0,50 -15,40 -15,10"
+        style={{ fill: 'F0FF36', stroke: '504C4C', strokeWidth: 0.3 }}
       />
     </g>);
   }

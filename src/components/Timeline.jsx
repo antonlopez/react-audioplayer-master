@@ -102,7 +102,7 @@ class Timeline extends React.Component {
     const receivedMarkerObject = this.props.markers;
 
     for (const key in receivedMarkerObject) {
-        // normalization position = (time/duration)* barwitdh
+        // normalization position = (time/duration)* barwidth
       const position = ((receivedMarkerObject[key] / 44100) / (this.props.duration)) * this.state.barWidth;
       markerArray.push(<Marker
         visibility={true}
