@@ -138,7 +138,7 @@ class Timeline extends React.Component {
             onMouseOver={this._onMouseOverProgressBar}
             onMouseOut={this._onMouseOutProgressBar}
           >
-            {this.callMarker()}
+            {this.props.showMarkers ? this.callMarker() : ''}
           </ProgressBar>
         </div>
         <div className={style.timeLine} style={{ height: containerHeight, width: containerWidth, transform: 'translateY(-4px)' }}>

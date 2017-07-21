@@ -39,6 +39,7 @@ class App extends React.Component {
         comment={true}
         color="#212121"
         markers={marker.markers}
+        showMarkers={true}
         mic={true}
         recordButton={() => {
           alert('Hello');

@@ -8,6 +8,7 @@ import style from '../styles/audioComponents.css';
 
 class Audio extends React.PureComponent {
   static propTypes = {
+    showMarkers: PropTypes.bool,
     markers: PropTypes.object,
     width: PropTypes.number,
     height: PropTypes.number,
@@ -65,6 +66,7 @@ class Audio extends React.PureComponent {
 
   render() {
     const {
+      showMarkers,
       markers,
       width,
       name,
@@ -113,6 +115,7 @@ class Audio extends React.PureComponent {
           timelineCallbacks={timelineCallbacks}
           mic={this.props.mic}
           markers={markers}
+          showMarkers={showMarkers}
 
 
         >
