@@ -97,16 +97,18 @@ class Timeline extends React.Component {
   }
   callMarker() {
     const markerArray = [];
-    //console.log('Timeline props', this.props.markers);
-    //console.log('local props', markerObj.markers);
+    // console.log('Timeline props', this.props.markers);
+    // console.log('local props', markerObj.markers);
     const receivedMarkerObject = this.props.markers;
 
     for (const key in receivedMarkerObject) {
         // normalization position = (time/duration)* barwidth
       const position = ((receivedMarkerObject[key] / 44100) / (this.props.duration)) * this.state.barWidth;
       markerArray.push(<Marker
+        style={{ overflow: 'visible' }}
         visibility={true}
         translate={`translate(${position})`}
+        text={key}
       />);
     }
 
@@ -125,8 +127,8 @@ class Timeline extends React.Component {
     const containerHeight2 = 10;
 
     return (
-      <div>
-        <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(-4px)' }}>
+      <div style={{ overflow: 'visible' }} >
+        <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(-4px)', overflow: 'visible' }}>
           <ProgressBar
             width={containerWidth2}
             height={handlerHeight2}
@@ -141,7 +143,7 @@ class Timeline extends React.Component {
             {this.props.showMarkers ? this.callMarker() : ''}
           </ProgressBar>
         </div>
-        <div className={style.timeLine} style={{ height: containerHeight, width: containerWidth, transform: 'translateY(-4px)' }}>
+        <div className={style.timeLine} style={{ height: containerHeight, width: containerWidth, transform: 'translateY(-4px)', overflow: 'visible' }}>
           <ProgressBar
             width={containerWidth}
             height={handlerHeight}
