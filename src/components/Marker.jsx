@@ -4,16 +4,29 @@ import PropTypes from 'prop-types';
 class Markers extends React.Component {
 
   render() {
-    return (<g
-      transform={this.props.translate}
-    >
-      <polygon
+    let verseMarkers = this.props.text;
+    const markerLength = verseMarkers.length;
+    let x = '-9';
+
+    if (markerLength > 2) {
+      x = '-13';
+    } else if (markerLength > 3) {
+      verseMarkers = '';
+    }
+
+    return (
+
+      <g
+        transform={this.props.translate}
+      >
+        <polygon
         // points="0,30 10,20 10,40 0,50 -10,40 -10,20"
-        points="0,20 15,10 15,40 0,50 -15,40 -15,10"
-        style={{ fill: 'F0FF36', stroke: '504C4C', strokeWidth: 0.3, overflow: 'visible' }}
-      />
-      <text x="-10" y="35" font-family="Verdana" font-size="55" fill="black" overflow={'visible'}>{this.props.text}</text>
-    </g>);
+          points="0,20 15,10 15,40 0,50 -15,40 -15,10"
+          style={{ fill: 'F0FF36', stroke: '504C4C', strokeWidth: 0.3 }}
+        />
+        <text x={x} y="35" fontFamily="roboto" fontSize="14" fill="#777373" >{verseMarkers}</text>
+      </g>
+    );
   }
 
 }

@@ -127,8 +127,8 @@ class Timeline extends React.Component {
     const containerHeight2 = 10;
 
     return (
-      <div style={{ overflow: 'visible' }} >
-        <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(-4px)', overflow: 'visible' }}>
+      <div >
+        <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(-4px)' }}>
           <ProgressBar
             width={containerWidth2}
             height={handlerHeight2}
@@ -143,7 +143,7 @@ class Timeline extends React.Component {
             {this.props.showMarkers ? this.callMarker() : ''}
           </ProgressBar>
         </div>
-        <div className={style.timeLine} style={{ height: containerHeight, width: containerWidth, transform: 'translateY(-4px)', overflow: 'visible' }}>
+        <div className={style.timeLine} style={{ height: containerHeight, width: containerWidth, transform: 'translateY(-4px)' }}>
           <ProgressBar
             width={containerWidth}
             height={handlerHeight}

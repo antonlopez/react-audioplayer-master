@@ -22,6 +22,7 @@ const ProgressBar = ({
       viewBox={`0 0 ${width} ${height}`}
       onMouseOver={onMouseOver}
       onMouseOut={onMouseOut}
+      overflow={'visible'}
     >
       <g onMouseDown={onMouseDown}>
         {/* A rect to expand the area of clicking */}
