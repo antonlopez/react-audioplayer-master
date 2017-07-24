@@ -6,11 +6,12 @@ class Markers extends React.Component {
   render() {
     let verseMarkers = this.props.text;
     const markerLength = verseMarkers.length;
-    let x = '-9';
+    let x = '-8';
 
     if (markerLength > 2) {
-      x = '-13';
-    } else if (markerLength > 3) {
+      x = '-12';
+    }
+    if (markerLength > 3) {
       verseMarkers = '';
     }
 
@@ -24,7 +25,7 @@ class Markers extends React.Component {
           points="0,20 15,10 15,40 0,50 -15,40 -15,10"
           style={{ fill: 'F0FF36', stroke: '504C4C', strokeWidth: 0.3 }}
         />
-        <text x={x} y="35" fontFamily="roboto" fontSize="14" fill="#777373" >{verseMarkers}</text>
+        <text x={x} y="35" fontFamily="roboto" fontSize="13" fill="#777373" >{verseMarkers}</text>
       </g>
     );
   }
