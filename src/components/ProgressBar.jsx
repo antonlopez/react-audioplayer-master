@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ProgressBar = ({
+  overflow,
   width,
   height,
   barHeight,
@@ -22,7 +23,7 @@ const ProgressBar = ({
       viewBox={`0 0 ${width} ${height}`}
       onMouseOver={onMouseOver}
       onMouseOut={onMouseOut}
-      overflow={'visible'}
+      overflow={overflow}
     >
       <g onMouseDown={onMouseDown}>
         {/* A rect to expand the area of clicking */}
@@ -57,7 +58,7 @@ ProgressBar.propTypes = {
   height: PropTypes.number.isRequired,
   barHeight: PropTypes.number.isRequired,
   translate: PropTypes.number.isRequired,
-  onMouseDown: PropTypes.func.isRequired
+  onMouseDown: PropTypes.func.isRequired,
 };
 ProgressBar.contextTypes = {
   color: PropTypes.string

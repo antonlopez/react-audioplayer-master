@@ -125,11 +125,13 @@ class Timeline extends React.Component {
     const handlerHeight2 = 112;           //
     const containerWidth2 = this.state.barWidth;
     const containerHeight2 = 10;
+    const overflow = 'visible';
 
     return (
-      <div >
-        <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(-4px)' }}>
+      <div style={{ overflow: 'visible' }} >
+        <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(10px)', overflow: 'visible' }}>
           <ProgressBar
+            overflow={overflow}
             width={containerWidth2}
             height={handlerHeight2}
             barHeight={0}

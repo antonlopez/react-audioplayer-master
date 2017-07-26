@@ -6,26 +6,33 @@ class Markers extends React.Component {
   render() {
     let verseMarkers = this.props.text;
     const markerLength = verseMarkers.length;
-    let x = '-8';
+    let x = '-7';
+    let position = this.props.translate;
 
+    if (markerLength === 1) {
+      x = '-4';
+    }
     if (markerLength > 2) {
-      x = '-12';
+      x = '-10';
     }
     if (markerLength > 3) {
       verseMarkers = '';
+    }
+    if (position === 'translate(0)'){
+      position = 'translate(16)';
     }
 
     return (
 
       <g
-        transform={this.props.translate}
+        transform={position}
       >
         <polygon
-        // points="0,30 10,20 10,40 0,50 -10,40 -10,20"
-          points="0,20 15,10 15,40 0,50 -15,40 -15,10"
+        //  points="0,20 15,10 15,40 0,50 -15,40 -15,10"
+          points="0,10 12,10 12,40 0,30 -12,40 -12,10"
           style={{ fill: 'F0FF36', stroke: '504C4C', strokeWidth: 0.3 }}
         />
-        <text x={x} y="35" fontFamily="roboto" fontSize="13" fill="#777373" >{verseMarkers}</text>
+        <text x={x} y="25" fontFamily="roboto" fontSize="11" fill="#3B3935" >{verseMarkers}</text>
       </g>
     );
   }
