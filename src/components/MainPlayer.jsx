@@ -18,6 +18,7 @@ class MainPlayer extends React.Component {
     this.state = { progressTime: 0, waveTime: 0
     };
     this.updateProgressTime = this.updateProgressTime.bind(this);
+    this.updateTimeWave = this.updateTimeWave.bind(this);
   }
   componentWillReceiveProps(newProps) {
     this.setState({ progressTime: newProps.timelineStates.progress });
@@ -25,8 +26,8 @@ class MainPlayer extends React.Component {
   updateProgressTime(progressTime) {
     this.setState({ progressTime });
   }
-  updateTimeWave(newTime) {
-    console.log('final time', newTime);
+  updateTimeWave(waveTime) {
+    this.setState({ waveTime });
   }
   render() {
     const {
@@ -46,7 +47,6 @@ class MainPlayer extends React.Component {
       buttonRecord
     } = this.props;
     const classNameCollection = `${style.mainPlayer} ${className}`.trim();
-    console.log('progress');
     return (
       <div className={classNameCollection}>
         <div className={style.btnStack}>
