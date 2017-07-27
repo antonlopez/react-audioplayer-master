@@ -31,16 +31,36 @@ export default merge({
       },
       {
         test: /\.css$/,
-        include: [ path.join(ROOT_DIR, 'src') ],
+        include: [path.join(ROOT_DIR, 'src')],
         use: [
           'style-loader',
           'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
           'postcss-loader?sourceMap=inline'
         ]
       }
-    ]
+    ],
+    loaders: [
+      {
+        test: require.resolve('wavesurfer.js'),
+        loader: 'expose?WaveSurfer'
+      }]
   },
   resolve: { extensions: ['.js', '.jsx', '.css'] },
+  externals: [{
+
+    'wavesurfer.js': {
+      root: 'WaveSurfer',
+      commonjs2: 'wavesurfer.js',
+      commonjs: 'wavesurfer.js',
+      amd: 'wavesurfer'
+    },
+    wavesurfer: {
+      root: 'WaveSurfer',
+      commonjs2: 'wavesurfer.js',
+      commonjs: 'wavesurfer.js',
+      amd: 'wavesurfer'
+    }
+  }],
   context: path.resolve(__dirname, 'src'),
   target: 'web'
 }, CONFIG);

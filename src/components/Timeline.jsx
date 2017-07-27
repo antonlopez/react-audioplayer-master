@@ -3,18 +3,21 @@ import PropTypes from 'prop-types';
 import ProgressBar from './ProgressBar';
 import ProgressBarHandler from './ProgressBarHandler';
 import style from '../styles/audioElements.css';
+import Marker from './Marker';
+import markerObj from '../songs/markers.json';
+
 
 class Timeline extends React.Component {
   static propTypes = {
     appWidth: PropTypes.number.isRequired,
-    duration: PropTypes.number.isRequired
+    duration: PropTypes.number.isRequired,
   };
   constructor(props) {
     super(props);
     this.state = {
       showHandler: false,
       barWidth: (props.appWidth < 300) ? 300 : props.appWidth,
-      translate: 0
+      translate: 0,
     };
     this.holding = false;
     this.shouldTogglePlayPause = this.props.playing;
@@ -92,32 +95,77 @@ class Timeline extends React.Component {
     if (translate > max) { translate = max; }
     this.setState({ translate });
   }
+  callMarker() {
+    const markerArray = [];
+    // console.log('Timeline props', this.props.markers);
+    // console.log('local props', markerObj.markers);
+    const receivedMarkerObject = this.props.markers;
+
+    for (const key in receivedMarkerObject) {
+        // normalization position = (time/duration)* barwidth
+      const position = ((receivedMarkerObject[key] / 44100) / (this.props.duration)) * this.state.barWidth;
+      markerArray.push(<Marker
+        style={{ overflow: 'visible' }}
+        visibility={true}
+        translate={`translate(${position})`}
+        text={key}
+      />);
+    }
+
+    return (
+        markerArray
+    );
+  }
   render() {
     const handlerWidth = 12;
-    const handlerHeight = 12;
+    const handlerHeight = 12;           //
     const containerWidth = this.state.barWidth;
+    const containerHeight = 100;
     const barHeight = 4;
+    const handlerHeight2 = 112;           //
+    const containerWidth2 = this.state.barWidth;
+    const containerHeight2 = 10;
+    const overflow = 'visible';
+
     return (
-      <div className={style.timeLine} style={{ width: containerWidth, transform: 'translateY(-4px)' }}>
-        <ProgressBar
-          width={containerWidth}
-          height={handlerHeight}
-          barHeight={barHeight}
-          handlerWidth={handlerWidth}
-          translate={this.state.translate}
-          duration={this.props.duration}
-          onMouseDown={this._onMouseDownProgressBar}
-          onMouseOver={this._onMouseOverProgressBar}
-          onMouseOut={this._onMouseOutProgressBar}
-        >
-          <ProgressBarHandler
-            width={handlerWidth}
+      <div style={{ overflow: 'visible' }} >
+        <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(10px)', overflow: 'visible' }}>
+          <ProgressBar
+            overflow={overflow}
+            width={containerWidth2}
+            height={handlerHeight2}
+            barHeight={0}
+            handlerWidth={handlerWidth}
+            translate={this.state.translate}
+            duration={this.props.duration}
+            onMouseDown={this._onMouseDownProgressBar}
+            onMouseOver={this._onMouseOverProgressBar}
+            onMouseOut={this._onMouseOutProgressBar}
+          >
+            {this.props.showMarkers ? this.callMarker() : ''}
+          </ProgressBar>
+        </div>
+        <div className={style.timeLine} style={{ height: containerHeight, width: containerWidth, transform: 'translateY(-4px)' }}>
+          <ProgressBar
+            width={containerWidth}
             height={handlerHeight}
-            visibility={this.state.showHandler || this.holding}
-            translate={`translate(${this.state.translate - 6})`}
-            onMouseDown={this._onMouseDownProgressBarHandler}
-          />
-        </ProgressBar>
+            barHeight={barHeight}
+            handlerWidth={handlerWidth}
+            translate={this.state.translate}
+            duration={this.props.duration}
+            onMouseDown={this._onMouseDownProgressBar}
+            onMouseOver={this._onMouseOverProgressBar}
+            onMouseOut={this._onMouseOutProgressBar}
+          >
+            <ProgressBarHandler
+              width={handlerWidth}
+              height={handlerHeight}
+              visibility={this.state.showHandler || this.holding}
+              translate={`translate(${this.state.translate - 6})`}
+              onMouseDown={this._onMouseDownProgressBarHandler}
+            />
+          </ProgressBar>
+        </div>
       </div>
     );
   }
