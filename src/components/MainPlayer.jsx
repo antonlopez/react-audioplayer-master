@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Timeline from './Timeline';
 import Controls from './Controls';
-import CommentInputContainer from './CommentInputContainer';
 import Time from './Time';
 import style from '../styles/audioElements.css';
 import RecordBtn from './buttons/RecordBtn';
 
 class MainPlayer extends React.Component {
+  static propTypes = {
+    markers: PropTypes.object,
+    showMarkers: PropTypes.bool
+  };
   constructor(props) {
     super(props);
     this.state = { progressTime: 0 };
@@ -21,6 +24,8 @@ class MainPlayer extends React.Component {
   }
   render() {
     const {
+      showMarkers,
+      markers,
       width,
       name,
       comment,
@@ -36,7 +41,6 @@ class MainPlayer extends React.Component {
     const classNameCollection = `${style.mainPlayer} ${className}`.trim();
     return (
       <div className={classNameCollection}>
-
         <div className={style.btnStack}>
           <Controls
             volumeOrientationDown={volumeOrientationDown}
@@ -44,6 +48,8 @@ class MainPlayer extends React.Component {
             {...controlCallbacks}
           />
           <Timeline
+            showMarkers={showMarkers}
+            markers={markers}
             appWidth={width - 250}
             updateProgressTime={this.updateProgressTime}
             {...timelineStates}
