@@ -10,11 +10,13 @@ class MainPlayer extends React.Component {
   static propTypes = {
     markers: PropTypes.object,
     showMarkers: PropTypes.bool,
-    src: PropTypes.string
+    src: PropTypes.string,
+    updateTime: PropTypes.string
   };
   constructor(props) {
     super(props);
-    this.state = { progressTime: 0 };
+    this.state = { progressTime: 0, waveTime: 0
+    };
     this.updateProgressTime = this.updateProgressTime.bind(this);
   }
   componentWillReceiveProps(newProps) {
@@ -22,6 +24,9 @@ class MainPlayer extends React.Component {
   }
   updateProgressTime(progressTime) {
     this.setState({ progressTime });
+  }
+  updateTimeWave(newTime) {
+    console.log('final time', newTime);
   }
   render() {
     const {
@@ -41,6 +46,7 @@ class MainPlayer extends React.Component {
       buttonRecord
     } = this.props;
     const classNameCollection = `${style.mainPlayer} ${className}`.trim();
+    console.log('progress');
     return (
       <div className={classNameCollection}>
         <div className={style.btnStack}>
@@ -50,6 +56,7 @@ class MainPlayer extends React.Component {
             {...controlCallbacks}
           />
           <Timeline
+            updateTime={this.updateTimeWave}
             src={src}
             showMarkers={showMarkers}
             markers={markers}
@@ -64,7 +71,7 @@ class MainPlayer extends React.Component {
           <div className={style.timeNameContainer} style={{ color: this.context.color }}>
             <div className={style.nameContainer} title={name}>{name}</div>
             <div className={style.timeContainer}>
-              <Time time={this.state.progressTime} />
+              <Time time={this.state.waveTime} />
               <span>{'/'}</span>
               <Time time={timelineStates.duration} />
             </div>

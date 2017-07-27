@@ -2,7 +2,7 @@ import React from 'react';
 import style from '../styles/audioComponents.css';
 
 const ButtonGroup = ({ children }) => {
-  const newStyle = { width: `${React.Children.count(children) * 50}px` };
+  const newStyle = { width: `${React.Children.count(children) * 100}px` };
   return (
     <div
       className={style.flexButtonBox}

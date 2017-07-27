@@ -44,11 +44,6 @@ const Controls = ({
   return (
     <ButtonGroup>
       <PlayPauseBtn onClick={togglePlayPause} />
-      <VolumeContainer
-        volume={volume}
-        setVolume={setVolume}
-        volumeOrientationDown={volumeOrientationDown}
-      />
     </ButtonGroup>
   );
 };
