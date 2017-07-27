@@ -81,7 +81,9 @@
     "react-addons-transition-group": "^15.6.0",
     "react-dom": "^15.6.1",
     "react-motion": "^0.4.7",
-    "reactstrap": "^4.8.0"
+    "react-wavesurfer": "^0.8.3",
+    "reactstrap": "^4.8.0",
+    "wavesurfer.js": "^1.4.0"
   },
   "author": "Wenliang Dai <daiwenliang123@gmail.com>",
   "license": "MIT",
