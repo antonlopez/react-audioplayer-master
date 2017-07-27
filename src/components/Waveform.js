@@ -9,7 +9,7 @@ class WaveForm extends Component {
     super(props);
 
     this.state = {
-      playing: true,
+      playing: false,
       pos: 0
     };
     this.handleTogglePlay = this.handleTogglePlay.bind(this);
@@ -27,13 +27,13 @@ class WaveForm extends Component {
   }
   render() {
     return (
-      <div style={{ width: '550px', marginLeft: '100px' }}>
+      <div style={{ width: '550px' }}>
         <Wavesurfer
-          audioFile={'https://files.freemusicarchive.org/music%2Fno_curator%2FThe_Womb%2FBang_-_An_Introduction_to_The_Womb%2FThe_Womb_-_02_-_Sex_Club.mp3'}
+          audioFile={this.props.src}
           pos={this.state.pos}
           onPosChange={this.handlePosChange}
           playing={this.state.playing}
-          options={{ barWidth: 0.1, waveColor:	'#F5A623', height: 50 }}
+          options={{ barWidth: 0.1, height: 30 }}
         />
       </div>
     );

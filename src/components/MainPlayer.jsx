@@ -9,7 +9,8 @@ import RecordBtn from './buttons/RecordBtn';
 class MainPlayer extends React.Component {
   static propTypes = {
     markers: PropTypes.object,
-    showMarkers: PropTypes.bool
+    showMarkers: PropTypes.bool,
+    src: PropTypes.string
   };
   constructor(props) {
     super(props);
@@ -24,6 +25,7 @@ class MainPlayer extends React.Component {
   }
   render() {
     const {
+      src,
       showMarkers,
       markers,
       width,
@@ -48,6 +50,7 @@ class MainPlayer extends React.Component {
             {...controlCallbacks}
           />
           <Timeline
+            src={src}
             showMarkers={showMarkers}
             markers={markers}
             appWidth={width - 250}

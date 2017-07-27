@@ -4,7 +4,7 @@ import ProgressBar from './ProgressBar';
 import ProgressBarHandler from './ProgressBarHandler';
 import style from '../styles/audioElements.css';
 import Marker from './Marker';
-import markerObj from '../songs/markers.json';
+import WaveForm from './Waveform';
 
 
 class Timeline extends React.Component {
@@ -129,7 +129,7 @@ class Timeline extends React.Component {
 
     return (
       <div style={{ overflow: 'visible' }} >
-        <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(10px)', overflow: 'visible' }}>
+        <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(2px)', overflow: 'visible' }}>
           <ProgressBar
             overflow={overflow}
             width={containerWidth2}
@@ -146,25 +146,7 @@ class Timeline extends React.Component {
           </ProgressBar>
         </div>
         <div className={style.timeLine} style={{ height: containerHeight, width: containerWidth, transform: 'translateY(-4px)' }}>
-          <ProgressBar
-            width={containerWidth}
-            height={handlerHeight}
-            barHeight={barHeight}
-            handlerWidth={handlerWidth}
-            translate={this.state.translate}
-            duration={this.props.duration}
-            onMouseDown={this._onMouseDownProgressBar}
-            onMouseOver={this._onMouseOverProgressBar}
-            onMouseOut={this._onMouseOutProgressBar}
-          >
-            <ProgressBarHandler
-              width={handlerWidth}
-              height={handlerHeight}
-              visibility={this.state.showHandler || this.holding}
-              translate={`translate(${this.state.translate - 6})`}
-              onMouseDown={this._onMouseDownProgressBarHandler}
-            />
-          </ProgressBar>
+          <WaveForm src={this.props.src} />
         </div>
       </div>
     );

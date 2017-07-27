@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Audio from './Audio';
 import playlist from '../songs/playlist.json';
 import marker from '../songs/markers.json';
-import WaveForm from './Waveform';
+
 
 // const App = () => (
 //   <Audio
@@ -31,7 +31,6 @@ class App extends React.Component {
     ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-play'));
   }
   render() {
-    // console.log('Marker obj', marker.markers);
     return (
       <div>
         <Audio
@@ -40,6 +39,7 @@ class App extends React.Component {
           fullPlayer={false}
           comment={true}
           color="#212121"
+          src="https://files.freemusicarchive.org/music%2Fno_curator%2FThe_Womb%2FBang_-_An_Introduction_to_The_Womb%2FThe_Womb_-_02_-_Sex_Club.mp3"
           markers={marker.markers}
           showMarkers={true}
           mic={true}
@@ -57,7 +57,6 @@ class App extends React.Component {
         // store a reference of the audio component
           ref={(audioComponent) => { this.audioComponent = audioComponent; }}
         />
-        <WaveForm />
       </div>
     );
   }
