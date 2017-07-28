@@ -92,10 +92,8 @@ class MainPlayer extends React.Component {
             {...timelineStates}
             {...timelineCallbacks}
           />
-
-          {this.props.markersButton ? markerButton : ''}
-
           <div className={style.timeNameContainer} style={{ color: this.context.color }}>
+            <div>{this.props.markersButton ? markerButton : ''}</div>
             <div className={style.nameContainer} title={name}>{name}</div>
             <div className={style.timeContainer}>
               <Time time={this.state.waveTime} />
