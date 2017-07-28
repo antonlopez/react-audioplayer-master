@@ -34,8 +34,8 @@ class App extends React.Component {
     return (
       <div>
         <Audio
-          width={600}
-          height={300}
+          width={''}
+          height={''}
           fullPlayer={false}
           comment={true}
           color="#fff"
@@ -46,8 +46,8 @@ class App extends React.Component {
           playlist={playlist.playlist}
           style={{
             boxShadow: '1px 2px 6px rgba(0, 0, 0, 0.2)',
-            width: '800px',
-            height: '50px',
+            width: '1200px',
+            height: '150px',
             marginTop: '200px',
             backgroundColor:'black'
           }}

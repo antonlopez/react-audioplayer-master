@@ -69,12 +69,12 @@ class MainPlayer extends React.Component {
     let PlayPauseBtn = Buttons.PlayBtn;
     const play = this.state.playState;
     const markersState = this.state.showMarkers;
-    const markerButton=<MarkerBtn onClick={this.showMarkers} />;
+    const markerButton = <MarkerBtn onClick={this.showMarkers} />;
     if (play) {
       PlayPauseBtn = Buttons.PauseBtn;
     }
     return (
-      <div className={classNameCollection}>
+      <div className={classNameCollection} style={{ marginTop: '50px' }} >
         <div className={style.btnStack}>
           <ButtonGroup>
             <PlayPauseBtn onClick={this.changeButton} />

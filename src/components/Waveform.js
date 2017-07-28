@@ -37,13 +37,13 @@ class WaveForm extends Component {
   }
   render() {
     return (
-      <div style={{ width: '550px' }}>
+      <div style={{ width: '950px', marginLeft: '' }}>
         <Wavesurfer
           audioFile={this.props.src}
           pos={this.state.pos}
           onPosChange={this.handlePosChange}
           playing={this.props.playAudio}
-          options={{ barWidth: 0.1, height: 30, waveColor: '#FFF' }}
+          options={{ barWidth: 0.01, height: 100, waveColor: '#FFF' }}
           onReady={this.duration}
           onFinish={this.finishedPlaying}
         />

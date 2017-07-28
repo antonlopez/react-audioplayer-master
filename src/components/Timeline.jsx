@@ -132,7 +132,7 @@ class Timeline extends React.Component {
   render() {
     const handlerWidth = 12;
     const handlerHeight = 12;           //
-    const containerWidth = this.state.barWidth;
+    const containerWidth = 950;
     const containerHeight = 100;
     const barHeight = 4;
     const handlerHeight2 = 112;           //
