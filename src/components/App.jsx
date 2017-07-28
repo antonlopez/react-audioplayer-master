@@ -38,20 +38,18 @@ class App extends React.Component {
           height={100}
           fullPlayer={false}
           comment={true}
-          color="#212121"
+          color="#fff"
           src="https://files.freemusicarchive.org/music%2Fno_curator%2FThe_Womb%2FBang_-_An_Introduction_to_The_Womb%2FThe_Womb_-_02_-_Sex_Club.mp3"
           markers={marker.markers}
           showMarkers={true}
-          mic={true}
-          recordButton={() => {
-            alert('Hello');
-          }}
+          markersButton={true}
           playlist={playlist.playlist}
           style={{
             boxShadow: '1px 2px 6px rgba(0, 0, 0, 0.2)',
             width: '800px',
             height: '50px',
-            marginTop: '200px'
+            marginTop: '200px',
+            backgroundColor:'black'
           }}
 
         // store a reference of the audio component

@@ -115,10 +115,10 @@ class Audio extends React.PureComponent {
           controlCallbacks={controlCallbacks}
           timelineStates={timelineStates}
           timelineCallbacks={timelineCallbacks}
-          mic={this.props.mic}
-          markers={markers}
+          markersButton={this.props.markersButton}
           showMarkers={showMarkers}
           src={src}
+          markers={markers}
 
 
         >

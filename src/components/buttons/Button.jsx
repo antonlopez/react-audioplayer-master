@@ -27,7 +27,8 @@ class Button extends React.PureComponent {
           this.setState({ mouseOver: false });
         }}
         style={{
-          border: this.state.mouseOver ? `.5px solid ${this.context.color}` : null
+          border: this.state.mouseOver ? `.5px solid ${this.context.color}` : null,
+          backgroundColor: 'black'
         }}
       >
         { this.props.children }

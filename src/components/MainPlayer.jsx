@@ -4,7 +4,7 @@ import Timeline from './Timeline';
 import Controls from './Controls';
 import Time from './Time';
 import style from '../styles/audioElements.css';
-import RecordBtn from './buttons/RecordBtn';
+import RecordBtn from './buttons/MarkerBtn';
 import ButtonGroup from './ButtonGroup';
 import * as Buttons from './buttons/index';
 
@@ -17,13 +17,14 @@ class MainPlayer extends React.Component {
   };
   constructor(props) {
     super(props);
-    this.state = { progressTime: 0, waveTime: 0, durationTime: 0, playState: false
+    this.state = { progressTime: 0, waveTime: 0, durationTime: 0, playState: false, showMarkers: false
     };
     this.updateProgressTime = this.updateProgressTime.bind(this);
     this.updateTimeWave = this.updateTimeWave.bind(this);
     this.durationTime = this.durationTime.bind(this);
     this.changeButton = this.changeButton.bind(this);
     this.finishedPlaying = this.finishedPlaying.bind(this);
+    this.showMarkers = this.showMarkers.bind(this);
   }
   componentWillReceiveProps(newProps) {
     this.setState({ progressTime: newProps.timelineStates.progress });
@@ -43,6 +44,9 @@ class MainPlayer extends React.Component {
   finishedPlaying(state) {
     this.setState({ playState: !state });
     console.log('state', state);
+  }
+  showMarkers() {
+    this.setState({ showMarkers: !this.state.showMarkers });
   }
   render() {
     const {
@@ -64,6 +68,7 @@ class MainPlayer extends React.Component {
     const classNameCollection = `${style.mainPlayer} ${className}`.trim();
     let PlayPauseBtn = Buttons.PlayBtn;
     const play = this.state.playState;
+    const markersState = this.state.showMarkers;
     if (play) {
       PlayPauseBtn = Buttons.PauseBtn;
     }
@@ -79,7 +84,7 @@ class MainPlayer extends React.Component {
             updateTime={this.updateTimeWave}
             finishedPlaying={this.finishedPlaying}
             src={src}
-            showMarkers={showMarkers}
+            showMarkers={markersState}
             markers={markers}
             appWidth={width - 250}
             updateProgressTime={this.updateProgressTime}
@@ -87,7 +92,7 @@ class MainPlayer extends React.Component {
             {...timelineCallbacks}
           />
 
-          {this.props.mic ? <RecordBtn onClick={this.props.buttonRecord} /> : ''}
+          {this.props.markersButton ? <RecordBtn onClick={this.showMarkers} /> : ''}
 
           <div className={style.timeNameContainer} style={{ color: this.context.color }}>
             <div className={style.nameContainer} title={name}>{name}</div>
