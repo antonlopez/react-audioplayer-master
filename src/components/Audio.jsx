@@ -8,6 +8,7 @@ import style from '../styles/audioComponents.css';
 
 class Audio extends React.PureComponent {
   static propTypes = {
+    loop: PropTypes.bool,
     showMarkers: PropTypes.bool,
     markers: PropTypes.object,
     width: PropTypes.number,
@@ -54,7 +55,8 @@ class Audio extends React.PureComponent {
     comment: false,
     volumeOrientationDown: false,
     onCommentSubmit: null,
-    record: null
+    record: null,
+    loop: false
   }
   static childContextTypes = {
     color: PropTypes.string
@@ -66,6 +68,7 @@ class Audio extends React.PureComponent {
 
   render() {
     const {
+      loop,
       showMarkers,
       markers,
       width,
@@ -116,6 +119,7 @@ class Audio extends React.PureComponent {
           mic={this.props.mic}
           markers={markers}
           showMarkers={showMarkers}
+          loop={loop}
 
 
         >

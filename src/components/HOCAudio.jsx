@@ -95,7 +95,7 @@ const HOCAudio = Audio => class HOCAudioComponent extends React.Component {
     //   console.log(e.target.currentTime);
     // }
   handleEndedProgress() {
-    this.playNext = false;
+    this.playNext = this.props.loop;                          // loop
     switch (this.state.playingState) {
       case 0: {
         this.skipToNext();
