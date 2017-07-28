@@ -9,7 +9,7 @@ class WaveForm extends Component {
     super(props);
 
     this.state = {
-      playing: true,
+      playing: false,
       pos: 0
     };
     this.handleTogglePlay = this.handleTogglePlay.bind(this);
@@ -24,9 +24,8 @@ class WaveForm extends Component {
     this.setState({
       pos: e.originalArgs[0]
     });
-    //const time = parseInt(this.state.pos);
+    const duration = e.wavesurfer.getDuration();
     this.props.pos(this.state.pos);
-    console.log('end:', e.wavesurfer.getDuration());
   }
   render() {
     return (
