@@ -5,6 +5,8 @@ import Controls from './Controls';
 import Time from './Time';
 import style from '../styles/audioElements.css';
 import RecordBtn from './buttons/RecordBtn';
+import ButtonGroup from './ButtonGroup';
+import * as Buttons from './buttons/index';
 
 class MainPlayer extends React.Component {
   static propTypes = {
@@ -15,11 +17,12 @@ class MainPlayer extends React.Component {
   };
   constructor(props) {
     super(props);
-    this.state = { progressTime: 0, waveTime: 0, durationTime: 0
+    this.state = { progressTime: 0, waveTime: 0, durationTime: 0, playState: false
     };
     this.updateProgressTime = this.updateProgressTime.bind(this);
     this.updateTimeWave = this.updateTimeWave.bind(this);
     this.durationTime = this.durationTime.bind(this);
+    this.changeButton = this.changeButton.bind(this);
   }
   componentWillReceiveProps(newProps) {
     this.setState({ progressTime: newProps.timelineStates.progress });
@@ -32,6 +35,9 @@ class MainPlayer extends React.Component {
   }
   durationTime(durationTime) {
     this.setState({ durationTime });
+  }
+  changeButton() {
+    this.setState({ playState: !this.state.playState });
   }
   render() {
     const {
@@ -51,14 +57,16 @@ class MainPlayer extends React.Component {
       buttonRecord
     } = this.props;
     const classNameCollection = `${style.mainPlayer} ${className}`.trim();
+    let PlayPauseBtn = Buttons.PlayBtn;
+    if (this.state.playState){
+      PlayPauseBtn = Buttons.PauseBtn;
+    }
     return (
       <div className={classNameCollection}>
         <div className={style.btnStack}>
-          <Controls
-            volumeOrientationDown={volumeOrientationDown}
-            {...controlStates}
-            {...controlCallbacks}
-          />
+          <ButtonGroup>
+            <PlayPauseBtn onClick={this.changeButton} />
+          </ButtonGroup>
           <Timeline
             updateDurationTime={this.durationTime}
             updateTime={this.updateTimeWave}
