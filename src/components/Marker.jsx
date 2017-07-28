@@ -19,7 +19,7 @@ class Markers extends React.Component {
       verseMarkers = '';
     }
     if (position === 'translate(0)'){
-      position = 'translate(16)';
+      position = 'translate(12)';
     }
 
     return (

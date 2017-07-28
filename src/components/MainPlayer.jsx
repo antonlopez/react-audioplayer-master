@@ -23,6 +23,7 @@ class MainPlayer extends React.Component {
     this.updateTimeWave = this.updateTimeWave.bind(this);
     this.durationTime = this.durationTime.bind(this);
     this.changeButton = this.changeButton.bind(this);
+    this.finishedPlaying = this.finishedPlaying.bind(this);
   }
   componentWillReceiveProps(newProps) {
     this.setState({ progressTime: newProps.timelineStates.progress });
@@ -38,6 +39,10 @@ class MainPlayer extends React.Component {
   }
   changeButton() {
     this.setState({ playState: !this.state.playState });
+  }
+  finishedPlaying(state) {
+    this.setState({ playState: !state });
+    console.log('state', state);
   }
   render() {
     const {
@@ -59,7 +64,7 @@ class MainPlayer extends React.Component {
     const classNameCollection = `${style.mainPlayer} ${className}`.trim();
     let PlayPauseBtn = Buttons.PlayBtn;
     const play = this.state.playState;
-    if (play){
+    if (play) {
       PlayPauseBtn = Buttons.PauseBtn;
     }
     return (
@@ -72,6 +77,7 @@ class MainPlayer extends React.Component {
             playAudio={play}
             updateDurationTime={this.durationTime}
             updateTime={this.updateTimeWave}
+            finishedPlaying={this.finishedPlaying}
             src={src}
             showMarkers={showMarkers}
             markers={markers}
