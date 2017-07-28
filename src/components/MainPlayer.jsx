@@ -4,9 +4,9 @@ import Timeline from './Timeline';
 import Controls from './Controls';
 import Time from './Time';
 import style from '../styles/audioElements.css';
-import RecordBtn from './buttons/MarkerBtn';
 import ButtonGroup from './ButtonGroup';
 import * as Buttons from './buttons/index';
+import MarkerBtn from './buttons/MarkerBtn';
 
 class MainPlayer extends React.Component {
   static propTypes = {
@@ -69,6 +69,7 @@ class MainPlayer extends React.Component {
     let PlayPauseBtn = Buttons.PlayBtn;
     const play = this.state.playState;
     const markersState = this.state.showMarkers;
+    const markerButton=<MarkerBtn onClick={this.showMarkers} />;
     if (play) {
       PlayPauseBtn = Buttons.PauseBtn;
     }
@@ -92,7 +93,7 @@ class MainPlayer extends React.Component {
             {...timelineCallbacks}
           />
 
-          {this.props.markersButton ? <RecordBtn onClick={this.showMarkers} /> : ''}
+          {this.props.markersButton ? markerButton : ''}
 
           <div className={style.timeNameContainer} style={{ color: this.context.color }}>
             <div className={style.nameContainer} title={name}>{name}</div>

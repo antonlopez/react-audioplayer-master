@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 
-const RecordBtn = (props, context) => (
+const MarkerBtn = (props, context) => (
   <Button {...props}>
 
       <svg width="20px" height="20px" viewBox="0 0 29 30" version="1.1" xmlns="http://www.w3.org/2000/svg"xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -23,8 +23,8 @@ const RecordBtn = (props, context) => (
 );
 
 
-RecordBtn.contextTypes = {
+MarkerBtn.contextTypes = {
   color: PropTypes.string
 };
 
-export default RecordBtn;
+export default MarkerBtn;

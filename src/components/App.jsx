@@ -35,7 +35,7 @@ class App extends React.Component {
       <div>
         <Audio
           width={600}
-          height={100}
+          height={300}
           fullPlayer={false}
           comment={true}
           color="#fff"

@@ -13,7 +13,7 @@ import VolumeMutedBtn from './VolumeMutedBtn';
 import CommentStartBtn from './CommentStartBtn';
 import CommentSendBtn from './CommentSendBtn';
 import CloseBtn from './CloseBtn';
-import RecordBtn from './MarkerBtn';
+import MarkerBtn from './MarkerBtn';
 
 export {
   LikeBtn,
@@ -30,6 +30,6 @@ export {
   VolumeMutedBtn,
   CommentStartBtn,
   CommentSendBtn,
-  CloseBtn, RecordBtn
+  CloseBtn, MarkerBtn
 
 };
