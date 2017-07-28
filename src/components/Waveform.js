@@ -24,8 +24,9 @@ class WaveForm extends Component {
     this.setState({
       pos: e.originalArgs[0]
     });
-    const time = parseInt(this.state.pos);
-    this.props.pos(time);
+    //const time = parseInt(this.state.pos);
+    this.props.pos(this.state.pos);
+    console.log('end:', e.wavesurfer.getDuration());
   }
   render() {
     return (
