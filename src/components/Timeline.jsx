@@ -23,6 +23,7 @@ class Timeline extends React.Component {
     this.shouldTogglePlayPause = this.props.playing;
     this.changeTranslate = this.changeTranslate.bind(this);
     this.receiveTime = this.receiveTime.bind(this);
+    this.durationTime = this.durationTime.bind(this);
     this._onMouseDownProgressBar = this._onMouseDownProgressBar.bind(this);
     this._onMouseOverProgressBar = this._onMouseOverProgressBar.bind(this);
     this._onMouseOutProgressBar = this._onMouseOutProgressBar.bind(this);
@@ -99,6 +100,9 @@ class Timeline extends React.Component {
   receiveTime(time) {
     this.props.updateTime(time);
   }
+  durationTime(time){
+    this.props.updateDurationTime(time);
+  }
   callMarker() {
     const markerArray = [];
     // console.log('Timeline props', this.props.markers);
@@ -150,7 +154,7 @@ class Timeline extends React.Component {
           </ProgressBar>
         </div>
         <div className={style.timeLine} style={{ height: containerHeight, width: containerWidth, transform: 'translateY(-4px)' }}>
-          <WaveForm src={this.props.src} pos={this.receiveTime} />
+          <WaveForm src={this.props.src} pos={this.receiveTime} durationTime ={this.durationTime} />
         </div>
       </div>
     );

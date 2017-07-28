@@ -15,10 +15,11 @@ class MainPlayer extends React.Component {
   };
   constructor(props) {
     super(props);
-    this.state = { progressTime: 0, waveTime: 0
+    this.state = { progressTime: 0, waveTime: 0, durationTime: 0
     };
     this.updateProgressTime = this.updateProgressTime.bind(this);
     this.updateTimeWave = this.updateTimeWave.bind(this);
+    this.durationTime = this.durationTime.bind(this);
   }
   componentWillReceiveProps(newProps) {
     this.setState({ progressTime: newProps.timelineStates.progress });
@@ -28,6 +29,9 @@ class MainPlayer extends React.Component {
   }
   updateTimeWave(waveTime) {
     this.setState({ waveTime });
+  }
+  durationTime(durationTime) {
+    this.setState({ durationTime });
   }
   render() {
     const {
@@ -56,6 +60,7 @@ class MainPlayer extends React.Component {
             {...controlCallbacks}
           />
           <Timeline
+            updateDurationTime={this.durationTime}
             updateTime={this.updateTimeWave}
             src={src}
             showMarkers={showMarkers}
@@ -73,7 +78,7 @@ class MainPlayer extends React.Component {
             <div className={style.timeContainer}>
               <Time time={this.state.waveTime} />
               <span>{'/'}</span>
-              <Time time={timelineStates.duration} />
+              <Time time={this.state.durationTime} />
             </div>
           </div>
         </div>

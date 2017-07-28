@@ -14,6 +14,7 @@ class WaveForm extends Component {
     };
     this.handleTogglePlay = this.handleTogglePlay.bind(this);
     this.handlePosChange = this.handlePosChange.bind(this);
+    this.duration = this.duration.bind(this);
   }
   handleTogglePlay() {
     this.setState({
@@ -27,6 +28,9 @@ class WaveForm extends Component {
     const duration = e.wavesurfer.getDuration();
     this.props.pos(this.state.pos);
   }
+  duration(e) {
+    this.props.durationTime(e.wavesurfer.getDuration());
+  }
   render() {
     return (
       <div style={{ width: '550px' }}>
@@ -36,6 +40,7 @@ class WaveForm extends Component {
           onPosChange={this.handlePosChange}
           playing={this.state.playing}
           options={{ barWidth: 0.1, height: 30 }}
+          onReady={this.duration}
         />
       </div>
     );
