@@ -58,7 +58,8 @@ class MainPlayer extends React.Component {
     } = this.props;
     const classNameCollection = `${style.mainPlayer} ${className}`.trim();
     let PlayPauseBtn = Buttons.PlayBtn;
-    if (this.state.playState){
+    const play = this.state.playState;
+    if (play){
       PlayPauseBtn = Buttons.PauseBtn;
     }
     return (
@@ -68,6 +69,7 @@ class MainPlayer extends React.Component {
             <PlayPauseBtn onClick={this.changeButton} />
           </ButtonGroup>
           <Timeline
+            playAudio={play}
             updateDurationTime={this.durationTime}
             updateTime={this.updateTimeWave}
             src={src}

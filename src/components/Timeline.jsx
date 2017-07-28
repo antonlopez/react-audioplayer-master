@@ -11,6 +11,7 @@ class Timeline extends React.Component {
   static propTypes = {
     appWidth: PropTypes.number.isRequired,
     duration: PropTypes.number.isRequired,
+    playAudio: PropTypes.bool
   };
   constructor(props) {
     super(props);
@@ -100,7 +101,7 @@ class Timeline extends React.Component {
   receiveTime(time) {
     this.props.updateTime(time);
   }
-  durationTime(time){
+  durationTime(time) {
     this.props.updateDurationTime(time);
   }
   callMarker() {
@@ -134,7 +135,6 @@ class Timeline extends React.Component {
     const containerWidth2 = this.state.barWidth;
     const containerHeight2 = 10;
     const overflow = 'visible';
-
     return (
       <div style={{ overflow: 'visible' }} >
         <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(2px)', overflow: 'visible' }}>
@@ -154,7 +154,7 @@ class Timeline extends React.Component {
           </ProgressBar>
         </div>
         <div className={style.timeLine} style={{ height: containerHeight, width: containerWidth, transform: 'translateY(-4px)' }}>
-          <WaveForm src={this.props.src} pos={this.receiveTime} durationTime ={this.durationTime} />
+          <WaveForm src={this.props.src} pos={this.receiveTime} durationTime={this.durationTime} playAudio={this.props.playAudio} />
         </div>
       </div>
     );

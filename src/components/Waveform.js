@@ -32,13 +32,14 @@ class WaveForm extends Component {
     this.props.durationTime(e.wavesurfer.getDuration());
   }
   render() {
+      console.log('state here', this.props.playAudio);
     return (
       <div style={{ width: '550px' }}>
         <Wavesurfer
           audioFile={this.props.src}
           pos={this.state.pos}
           onPosChange={this.handlePosChange}
-          playing={this.state.playing}
+          playing={this.props.playAudio}
           options={{ barWidth: 0.1, height: 30 }}
           onReady={this.duration}
         />
