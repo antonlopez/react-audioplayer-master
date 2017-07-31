@@ -19,6 +19,7 @@ class Timeline extends React.Component {
       showHandler: false,
       barWidth: (props.appWidth < 300) ? 300 : props.appWidth,
       translate: 0,
+      duration:0
     };
     this.holding = false;
     this.shouldTogglePlayPause = this.props.playing;
@@ -104,6 +105,7 @@ class Timeline extends React.Component {
   }
   durationTime(time) {
     this.props.updateDurationTime(time);
+    this.setState({ duration: time});
   }
   finishedPlaying(state){
     this.props.finishedPlaying(state);
@@ -116,7 +118,7 @@ class Timeline extends React.Component {
 
     for (const key in receivedMarkerObject) {
         // normalization position = (time/duration)* barwidth
-      const position = ((receivedMarkerObject[key] / 44100) / (this.props.duration)) * this.state.barWidth;
+      const position = ((receivedMarkerObject[key] / 44100) / (this.state.duration)) * this.state.barWidth;
       markerArray.push(<Marker
         style={{ overflow: 'visible' }}
         visibility={true}
