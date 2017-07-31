@@ -37,7 +37,7 @@ class WaveForm extends Component {
   }
   render() {
     return (
-      <div style={{ width: '950px', marginLeft: '' }}>
+      <div style={{ width: '950px', marginLeft: '', cursor: 'pointer' }}>
         <Wavesurfer
           audioFile={this.props.src}
           pos={this.state.pos}
