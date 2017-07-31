@@ -6,14 +6,14 @@ class Markers extends React.Component {
   render() {
     let verseMarkers = this.props.text;
     const markerLength = verseMarkers.length;
-    let x = '-7';
+    let x = '0';
     let position = this.props.translate;
 
     if (markerLength === 1) {
-      x = '-4';
+      x = '0';
     }
     if (markerLength > 2) {
-      x = '-10';
+      x = '0';
     }
     if (markerLength > 3) {
       verseMarkers = '';
@@ -34,12 +34,11 @@ class Markers extends React.Component {
                 </g>
             </g>
         </g>
+        <text textAnchor="middle" x="14" y="12" fontFamily="roboto" fontSize="11" fill="#3B3935" >{verseMarkers}</text>
       </svg>
     );
   }
-
 }
-
 
 Markers.propTypes = {
   translate: PropTypes.string.isRequired
