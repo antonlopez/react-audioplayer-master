@@ -36,7 +36,6 @@ class App extends React.Component {
         <Audio
           width={''}
           height={''}
-          fullPlayer={false}
           comment={true}
           color="#fff"
           src="https://files.freemusicarchive.org/music%2Fno_curator%2FThe_Womb%2FBang_-_An_Introduction_to_The_Womb%2FThe_Womb_-_02_-_Sex_Club.mp3"

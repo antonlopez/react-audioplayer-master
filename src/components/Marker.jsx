@@ -28,7 +28,7 @@ class Markers extends React.Component {
         transform={position}
       >
         <polygon
-              //  points="0,20 15,10 15,40 0,50 -15,40 -15,10"
+               //points="0,10 15,10 15,40 0,30 -15,40 -15,10"
           points=" 0,10 12,10 12,40 0,30 -12,40 -12 80 -15 80 -12,10 "
           style={{ fill: 'F0FF36', stroke: '504C4C', strokeWidth: 0.3 }}
         />

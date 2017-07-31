@@ -6,7 +6,7 @@ import MainPlayer from './MainPlayer';
 import styleNormalize from '../styles/audioReset.css';
 import style from '../styles/audioComponents.css';
 
-class Audio extends React.PureComponent {
+class WaveAudio extends React.PureComponent {
   static propTypes = {
     src: PropTypes.string,
     showMarkers: PropTypes.bool,
@@ -130,4 +130,4 @@ class Audio extends React.PureComponent {
   }
 }
 
-export default HOCAudio(Audio);
+export default WaveAudio;

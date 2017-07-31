@@ -1,5 +1,5 @@
-# react-audioplayer
 
+#Careful
 I merged the react-wavesurfer with react-audioplayer and came up with this audioplayer
 it includes a wave and a markers option
 

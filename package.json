@@ -1,7 +1,7 @@
 {
-  "name": "translation-audio-player",
-  "version": "1.1.0",
-  "description": "A personal audio player for React.js with a few modifications from original",
+  "name": "translation-waveform-audio",
+  "version": "1.0.0",
+  "description": "Waveform react audioplayer",
   "main": "lib/index.js",
   "repository": {
     "url": "git+https://github.com/wenliangdai/react-audioplayer.git",
@@ -85,7 +85,7 @@
     "reactstrap": "^4.8.0",
     "wavesurfer.js": "^1.4.0"
   },
-  "author": "Wenliang Dai <daiwenliang123@gmail.com>",
+  "author": "Juan",
   "license": "MIT",
   "keywords": [
     "juan"

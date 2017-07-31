@@ -1,3 +1,3 @@
-import Audio from './components/Audio';
+import WaveAudio from './components/Audio';
 
-export default Audio;
+export default WaveAudio;
