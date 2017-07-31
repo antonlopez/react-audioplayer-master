@@ -122,7 +122,7 @@ class Timeline extends React.Component {
       markerArray.push(<Marker
         style={{ overflow: 'visible' }}
         visibility={true}
-        translate={`translate(${position})`}
+        translate={position}
         text={key}
       />);
     }
