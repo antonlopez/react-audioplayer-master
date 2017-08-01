@@ -30,12 +30,49 @@ class App extends React.Component {
     // some code ...
     ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-play'));
   }
+
+  constructor() {
+    super()
+    
+    this.state = {
+      containerWidth: window.innerWidth - 250,
+    };
+    
+    this._handleWindowResize = this._handleWindowResize.bind(this)
+    this._isMounted = false;
+  }
+
+  get isMounted() {
+    return this._isMounted;
+  }
+  set isMounted(val) {
+    this._isMounted = val;
+  }
+
+  componentDidMount () {
+		this.isMounted = true;
+    window.addEventListener('resize', this._handleWindowResize);
+	}
+
+	componentWillUnmount () {
+		this.isMounted = false;
+    window.removeEventListener('resize', this._handleWindowResize);
+  }
+  
+  _handleWindowResize () {
+		if (this.isMounted) {
+      this.setState({
+        containerWidth: window.innerWidth - 250
+      });
+    }
+	}
+
   render() {
     return (
       <div>
         <Audio
-          width={''}
-          height={''}
+          width={this.state.containerWidth}
+          //height={''}
           fullPlayer={false}
           comment={true}
           color="#fff"
@@ -45,7 +82,7 @@ class App extends React.Component {
           playlist={playlist.playlist}
           style={{
             boxShadow: '1px 2px 6px rgba(0, 0, 0, 0.2)',
-            width: '1200px',
+            width: this.state.containerWidth,
             height: '150px',
             marginTop: '200px',
             backgroundColor:'black'

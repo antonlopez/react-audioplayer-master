@@ -17,9 +17,9 @@ class Timeline extends React.Component {
     super(props);
     this.state = {
       showHandler: false,
-      barWidth: (props.appWidth < 300) ? 300 : props.appWidth,
+      barWidth: props.appWidth,
       translate: 0,
-      duration:0
+      duration:0,
     };
     this.holding = false;
     this.shouldTogglePlayPause = this.props.playing;
@@ -35,6 +35,7 @@ class Timeline extends React.Component {
 
     this.onMouseMoveFunctionRef = null;
   }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.duration !== 0 && !this.holding) {
       const lengthPerSecond = this.state.barWidth / nextProps.duration;
@@ -117,13 +118,13 @@ class Timeline extends React.Component {
     const receivedMarkerObject = this.props.markers;
 
     for (const key in receivedMarkerObject) {
-        // normalization position = (time/duration)* barwidth
-      const position = ((receivedMarkerObject[key] / 44100) / (this.state.duration)) * this.state.barWidth;
+      const position = ((receivedMarkerObject[key] / 44100) / (this.state.duration)) * this.props.appWidth;
       markerArray.push(<Marker
         style={{ overflow: 'visible' }}
         visibility={true}
-        translate={position}
+        translate={String(position)}
         text={key}
+        key={key}
       />);
     }
 
@@ -143,7 +144,7 @@ class Timeline extends React.Component {
     const overflow = 'visible';
     return (
       <div style={{ overflow: 'visible' }} >
-        <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(-45px)', overflow: 'visible' }}>
+        <div style={{ height: containerHeight2, width: this.props.appWidth, overflow: 'visible' }}>
           <ProgressBar
             overflow={overflow}
             width={containerWidth2}
@@ -159,13 +160,14 @@ class Timeline extends React.Component {
             {this.props.showMarkers ? this.callMarker() : ''}
           </ProgressBar>
         </div>
-        <div className={style.timeLine} style={{ height: containerHeight, width: containerWidth, transform: 'translateY(-4px)' }}>
+        <div className={style.timeLine} style={{ height: containerHeight, width: this.props.appWidth}}>
           <WaveForm
             src={this.props.src}
             pos={this.receiveTime}
             durationTime={this.durationTime}
             playAudio={this.props.playAudio}
             finishedPlaying={this.finishedPlaying}
+            width={this.props.appWidth}
           />
         </div>
       </div>
