@@ -8,6 +8,7 @@ import style from '../styles/audioComponents.css';
 
 class Audio extends React.PureComponent {
   static propTypes = {
+    loop: PropTypes.bool,
     src: PropTypes.string,
     showMarkers: PropTypes.bool,
     markers: PropTypes.object,
@@ -67,6 +68,7 @@ class Audio extends React.PureComponent {
 
   render() {
     const {
+      loop,
       src,
       showMarkers,
       markers,
@@ -119,6 +121,7 @@ class Audio extends React.PureComponent {
           showMarkers={showMarkers}
           src={src}
           markers={markers}
+          loop={loop}
 
 
         >
