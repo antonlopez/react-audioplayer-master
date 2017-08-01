@@ -9,7 +9,7 @@ class WaveForm extends Component {
     super(props);
 
     this.state = {
-      playing: false,
+      playing: this.props.playAudio,
       pos: 0
     };
     this.handleTogglePlay = this.handleTogglePlay.bind(this);
@@ -35,7 +35,13 @@ class WaveForm extends Component {
   finishedPlaying() {
     this.props.finishedPlaying(true);
   }
+  playingState() {
+    this.setState({ playing: this.props.playAudio });
+    return this.state.playing;
+  }
+
   render() {
+    const playing = this.state.playing;
     return (
       <div style={{ width: '950px', marginLeft: '', cursor: 'pointer' }}>
         <Wavesurfer

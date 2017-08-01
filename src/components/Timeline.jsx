@@ -19,7 +19,7 @@ class Timeline extends React.Component {
       showHandler: false,
       barWidth: (props.appWidth < 300) ? 300 : props.appWidth,
       translate: 0,
-      duration:0
+      duration: 0
     };
     this.holding = false;
     this.shouldTogglePlayPause = this.props.playing;
@@ -105,11 +105,11 @@ class Timeline extends React.Component {
   }
   durationTime(time) {
     this.props.updateDurationTime(time);
-    this.setState({ duration: time});
+    this.setState({ duration: time });
   }
-  finishedPlaying(state){
+  finishedPlaying(state) {
     this.props.finishedPlaying(state);
-    }
+  }
   callMarker() {
     const markerArray = [];
     // console.log('Timeline props', this.props.markers);
@@ -143,7 +143,7 @@ class Timeline extends React.Component {
     const overflow = 'visible';
     return (
       <div style={{ overflow: 'visible' }} >
-        <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(-45px)', overflow: 'visible' }}>
+        <div style={{ height: containerHeight2, width: containerWidth2, transform: 'translateY(-20px)', overflow: 'visible' }}>
           <ProgressBar
             overflow={overflow}
             width={containerWidth2}
@@ -161,6 +161,7 @@ class Timeline extends React.Component {
         </div>
         <div className={style.timeLine} style={{ height: containerHeight, width: containerWidth, transform: 'translateY(-4px)' }}>
           <WaveForm
+            loop={this.props.loop}
             src={this.props.src}
             pos={this.receiveTime}
             durationTime={this.durationTime}

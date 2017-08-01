@@ -43,7 +43,9 @@ class MainPlayer extends React.Component {
   }
   finishedPlaying(state) {
     this.setState({ playState: !state });
-    console.log('state', state);
+    if (this.props.loop) {
+      this.setState({ playState: true });
+    }
   }
   showMarkers() {
     this.setState({ showMarkers: !this.state.showMarkers });
@@ -85,6 +87,7 @@ class MainPlayer extends React.Component {
             updateTime={this.updateTimeWave}
             finishedPlaying={this.finishedPlaying}
             src={src}
+            loop={this.props.loop}
             showMarkers={markersState}
             markers={markers}
             appWidth={width - 250}

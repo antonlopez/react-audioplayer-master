@@ -43,6 +43,7 @@ class App extends React.Component {
           markers={marker.markers}
           markersButton={true}
           playlist={playlist.playlist}
+          loop={false}
           style={{
             boxShadow: '1px 2px 6px rgba(0, 0, 0, 0.2)',
             width: '1200px',
