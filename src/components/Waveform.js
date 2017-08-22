@@ -34,6 +34,7 @@ class WaveForm extends Component {
   }
   finishedPlaying() {
     this.props.finishedPlaying(true);
+
   }
   render() {
     return (

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import HOCAudio from './HOCAudio';
-import CommentsWrapper from './CommentsWrapper';
 import MainPlayer from './MainPlayer';
 import styleNormalize from '../styles/audioReset.css';
 import style from '../styles/audioComponents.css';
@@ -95,16 +94,6 @@ class Audio extends React.PureComponent {
         className={`${styleNormalize.rootContainer} ${style.audio}`}
         style={newStyle}
       >
-        {
-          fullPlayer ?
-            <CommentsWrapper
-              comment={comment}
-              width={_width}
-              height={_height - 52}
-              progress={timelineStates.progress}
-              {...CommentsWrapperStates}
-            /> : null
-        }
         <MainPlayer
           width={_width}
           name={name}

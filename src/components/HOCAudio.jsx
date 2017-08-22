@@ -295,10 +295,6 @@ const HOCAudio = Audio => class HOCAudioComponent extends React.Component {
     this.audioElement.removeEventListener('volumechange', this.onVolumeChange);
     this.audioElement = null;
 
-    ReactDOM.findDOMNode(this).removeEventListener('audio-play', this.playEventHandler);
-    ReactDOM.findDOMNode(this).removeEventListener('audio-pause', this.pauseEventHandler);
-    ReactDOM.findDOMNode(this).removeEventListener('audio-skip-to-next', this.skipToNextEventHandler);
-    ReactDOM.findDOMNode(this).removeEventListener('audio-skip-to-previous', this.skipToPreviousEventHandler);
   }
   };
 

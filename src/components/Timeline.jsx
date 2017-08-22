@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProgressBar from './ProgressBar';
-import ProgressBarHandler from './ProgressBarHandler';
 import style from '../styles/audioElements.css';
 import Marker from './Marker';
 import WaveForm from './Waveform';
@@ -111,6 +110,10 @@ class Timeline extends React.Component {
   finishedPlaying(state){
     this.props.finishedPlaying(state);
     }
+  markerClicked(){
+      console.log('marker clicked');
+
+    }
   callMarker() {
     const markerArray = [];
     // console.log('Timeline props', this.props.markers);
@@ -120,6 +123,7 @@ class Timeline extends React.Component {
     for (const key in receivedMarkerObject) {
       const position = ((receivedMarkerObject[key] / 44100) / (this.state.duration)) * this.props.appWidth;
       markerArray.push(<Marker
+        onClick={this.markerClicked()}
         style={{ overflow: 'visible' }}
         visibility={true}
         translate={String(position)}
