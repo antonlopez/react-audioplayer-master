@@ -21,8 +21,6 @@ const ProgressBar = ({
       width={width}
       height={height}
       viewBox={`0 0 ${width} ${height}`}
-      onMouseOver={onMouseOver}
-      onMouseOut={onMouseOut}
       overflow={overflow}
     >
       <g onMouseDown={onMouseDown}>
@@ -54,11 +52,11 @@ const ProgressBar = ({
   );
 };
 ProgressBar.propTypes = {
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  barHeight: PropTypes.number.isRequired,
-  translate: PropTypes.number.isRequired,
-  onMouseDown: PropTypes.func.isRequired,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  barHeight: PropTypes.number,
+  translate: PropTypes.number,
+  onMouseDown: PropTypes.func
 };
 ProgressBar.contextTypes = {
   color: PropTypes.string

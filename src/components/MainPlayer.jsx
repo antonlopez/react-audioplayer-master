@@ -23,10 +23,10 @@ class MainPlayer extends React.Component {
     this.durationTime = this.durationTime.bind(this);
     this.changeButton = this.changeButton.bind(this);
     this.finishedPlaying = this.finishedPlaying.bind(this);
-    this.showMarkers = this.showMarkers.bind(this);
+    this.displayMarkers = this.displayMarkers.bind(this);
   }
   componentWillReceiveProps(newProps) {
-    this.setState({ progressTime: newProps.timelineStates.progress });
+  //  this.setState({ progressTime: newProps.timelineStates.progress });
   }
   updateProgressTime(progressTime) {
     this.setState({ progressTime });
@@ -44,7 +44,7 @@ class MainPlayer extends React.Component {
     this.setState({ playState: !state });
     console.log('state', state);
   }
-  showMarkers() {
+  displayMarkers() {
     this.setState({ showMarkers: !this.state.showMarkers });
   }
   render() {
@@ -68,12 +68,12 @@ class MainPlayer extends React.Component {
     let PlayPauseBtn = Buttons.PlayBtn;
     const play = this.state.playState;
     const markersState = this.state.showMarkers;
-    const markerButton = <MarkerBtn onClick={this.showMarkers} />;
+    const markerButton = <MarkerBtn onClick={this.displayMarkers} />;
     if (play) {
       PlayPauseBtn = Buttons.PauseBtn;
     }
     return (
-      <div className={classNameCollection} style={{ marginTop: '50px' }} >
+      <div className={classNameCollection} style={{}} >
         <div className={style.btnStack}>
           <ButtonGroup>
             <PlayPauseBtn onClick={this.changeButton} />
@@ -87,9 +87,9 @@ class MainPlayer extends React.Component {
             showMarkers={markersState}
             markers={markers}
             appWidth={width - 250}
-            updateProgressTime={this.updateProgressTime}
-            {...timelineStates}
-            {...timelineCallbacks}
+            //updateProgressTime={this.updateProgressTime}
+          //  {...timelineStates}
+          //  {...timelineCallbacks}
           />
           <div className={style.timeNameContainer} style={{ color: this.context.color }}>
             <div>{this.props.markersButton ? markerButton : ''}</div>

@@ -33,11 +33,11 @@ class App extends React.Component {
 
   constructor() {
     super()
-    
+
     this.state = {
       containerWidth: window.innerWidth - 250,
     };
-    
+
     this._handleWindowResize = this._handleWindowResize.bind(this)
     this._isMounted = false;
   }
@@ -58,7 +58,7 @@ class App extends React.Component {
 		this.isMounted = false;
     window.removeEventListener('resize', this._handleWindowResize);
   }
-  
+
   _handleWindowResize () {
 		if (this.isMounted) {
       this.setState({
@@ -68,10 +68,12 @@ class App extends React.Component {
 	}
 
   render() {
+
+
     return (
       <div>
         <Audio
-          width={this.state.containerWidth}
+        //  width={this.state.containerWidth}
           //height={''}
           fullPlayer={false}
           comment={true}

@@ -100,10 +100,6 @@ class Audio extends React.PureComponent {
           comment={fullPlayer ? comment : comment}
           buttonRecord={recordButton}
           volumeOrientationDown={volumeOrientationDown}
-          controlStates={controlStates}
-          controlCallbacks={controlCallbacks}
-          timelineStates={timelineStates}
-          timelineCallbacks={timelineCallbacks}
           markersButton={this.props.markersButton}
           showMarkers={showMarkers}
           src={src}

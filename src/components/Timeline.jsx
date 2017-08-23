@@ -9,7 +9,7 @@ import WaveForm from './Waveform';
 class Timeline extends React.Component {
   static propTypes = {
     appWidth: PropTypes.number.isRequired,
-    duration: PropTypes.number.isRequired,
+    duration: PropTypes.number,
     playAudio: PropTypes.bool
   };
   constructor(props) {
@@ -19,6 +19,8 @@ class Timeline extends React.Component {
       barWidth: props.appWidth,
       translate: 0,
       duration:0,
+      drag: false,
+      newPosition: 0
     };
     this.holding = false;
     this.shouldTogglePlayPause = this.props.playing;
@@ -31,6 +33,7 @@ class Timeline extends React.Component {
     this._onMouseDownProgressBarHandler = this._onMouseDownProgressBarHandler.bind(this);
     this._onMouseUp = this._onMouseUp.bind(this);
     this.finishedPlaying = this.finishedPlaying.bind(this);
+    this.dragPosition = this.dragPosition.bind(this);
 
     this.onMouseMoveFunctionRef = null;
   }
@@ -110,8 +113,10 @@ class Timeline extends React.Component {
   finishedPlaying(state){
     this.props.finishedPlaying(state);
     }
-  markerClicked(){
-      console.log('marker clicked');
+  dragPosition(position) {
+
+    this.setState({ newPosition: position });
+    console.log(this.state.position);
 
     }
   callMarker() {
@@ -122,26 +127,23 @@ class Timeline extends React.Component {
 
     for (const key in receivedMarkerObject) {
       const position = ((receivedMarkerObject[key] / 44100) / (this.state.duration)) * this.props.appWidth;
+
       markerArray.push(<Marker
-        onClick={this.markerClicked()}
         style={{ overflow: 'visible' }}
         visibility={true}
         translate={String(position)}
         text={key}
         key={key}
+        dragPosition={this.dragPosition}
       />);
     }
-
     return (
         markerArray
     );
   }
   render() {
     const handlerWidth = 12;
-    const handlerHeight = 12;           //
-    const containerWidth = 950;
     const containerHeight = 100;
-    const barHeight = 4;
     const handlerHeight2 = 112;           //
     const containerWidth2 = this.state.barWidth;
     const containerHeight2 = 10;
@@ -155,13 +157,13 @@ class Timeline extends React.Component {
             height={handlerHeight2}
             barHeight={0}
             handlerWidth={handlerWidth}
-            translate={this.state.translate}
             duration={this.props.duration}
-            onMouseDown={this._onMouseDownProgressBar}
-            onMouseOver={this._onMouseOverProgressBar}
-            onMouseOut={this._onMouseOutProgressBar}
+            onMouseDown={null}
+            onMouseOver={null}
+            onMouseOut={null}
           >
             {this.props.showMarkers ? this.callMarker() : ''}
+
           </ProgressBar>
         </div>
         <div className={style.timeLine} style={{ height: containerHeight, width: this.props.appWidth}}>
@@ -172,6 +174,7 @@ class Timeline extends React.Component {
             playAudio={this.props.playAudio}
             finishedPlaying={this.finishedPlaying}
             width={this.props.appWidth}
+            getPosition={this.state.newPosition}
           />
         </div>
       </div>

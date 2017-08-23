@@ -44,7 +44,7 @@ class WaveForm extends Component {
           pos={this.state.pos}
           onPosChange={this.handlePosChange}
           playing={this.props.playAudio}
-          options={{ barWidth: 0.5, hideScrollbar: true, normalize: true, height: 100, waveColor: '#FFF' }}
+          options={{ cursorWidth: 4, progressColor: '#3791D5', cursorColor: '#3791D5', barWidth: 0.2, hideScrollbar: true, normalize: true, height: 100, waveColor: '#FFF' }}
           onReady={this.duration}
           onFinish={this.finishedPlaying}
         />
