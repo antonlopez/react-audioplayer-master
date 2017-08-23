@@ -10,18 +10,10 @@ class Markers extends React.Component {
   }
 
   getPosition(position){
-    console.log(position)
-    //this.props.dragPosition(this.state.newPostion);
+  //  console.log(position)
+    this.props.dragPosition(position);
 
   }
-
-  renderPosition(position){
-    console.log(position);
-    this.setState({
-      newPosition: position
-    });
-  }
-
 
 
   render() {

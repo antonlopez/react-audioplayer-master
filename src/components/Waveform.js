@@ -37,6 +37,7 @@ class WaveForm extends Component {
 
   }
   render() {
+    console.log(this.props.newPosition);
     return (
       <div style={{ width: this.props.width, marginLeft: '', cursor: 'pointer' }}>
         <Wavesurfer

@@ -113,10 +113,10 @@ class Timeline extends React.Component {
   finishedPlaying(state){
     this.props.finishedPlaying(state);
     }
-  dragPosition(position) {
-
-    this.setState({ newPosition: position });
-    console.log(this.state.position);
+  dragPosition(NewPosition) {
+    console.log(NewPosition);
+    this.setState({ newPosition: NewPosition });
+  
 
     }
   callMarker() {
